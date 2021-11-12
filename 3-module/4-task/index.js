@@ -4,22 +4,16 @@ function showSalary(users, age) {
 }
 
 function getUsersInRange(users, maxAge) {
-  let result = [];
-  for (let user of users) {
-    if (user.age <= maxAge) {
-      result.push({
+  return users
+    .filter(user => user.age <= maxAge)
+    .map(user => {
+      return {
         name: user.name,
         balance: user.balance
-      });
-    }
-  }
-  return result;
+    };
+  });
 }
 
 function writeArrayToString(users) {
-  let result = [];
-  for (let user of users) {
-    result.push(user.name.concat(", ", user.balance));
-  }
-  return result.join("\n");
+  return users.map(user => user.name.concat(", ", user.balance)).join("\n");
 }
