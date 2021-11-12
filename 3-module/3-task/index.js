@@ -1,24 +1,14 @@
 function camelize(str) {
-  let stringArray = splitStringToArray(str);
-  let camelizeArray = camelizeArrayItems(stringArray);
-  camelizeArray = deleteFirstArrayElementIfEmptyString(camelizeArray);
-  return camelizeArray.join("");
-}
-
-function splitStringToArray(str) {
-  return str.split("-");
-}
-
-function camelizeArrayItems(array) {
-  for (let i = 1; i < array.length; i++) {
-    array[i] = array[i][0].toUpperCase().concat(array[i].slice(1));
-  }
-  return array;
+  let stringArray = str.split("-");
+  stringArray = deleteFirstArrayElementIfEmptyString(stringArray);
+  return stringArray
+    .map((word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1))
+    .join("");
 }
 
 function deleteFirstArrayElementIfEmptyString(array) {
   if(array[0].length === null) {
-    delete array[0];
+    array.splice(0);
   }
   return array;
 }
