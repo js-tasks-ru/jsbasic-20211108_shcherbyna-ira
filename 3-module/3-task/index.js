@@ -10,11 +10,10 @@ function splitStringToArray(str) {
 }
 
 function camelizeArrayItems(array) {
-  let result = [];
   for (let i = 1; i < array.length; i++) {
-    result[i].push(array[i][0].toUpperCase().concat(array[i].slice(1)));
+    array[i] = array[i][0].toUpperCase().concat(array[i].slice(1));
   }
-  return result;
+  return array;
 }
 
 function deleteFirstArrayElementIfEmptyString(array) {
